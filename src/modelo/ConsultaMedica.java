@@ -17,8 +17,8 @@ public class ConsultaMedica {
     public String verResumenClinico() {
         return "Resumen consulta de " +
                cita.getPaciente().getNombres() +
-               " \nMotivo: " + motivo +
-               " \nDiagnosticos: " + diagnosticos;
+               " Motivo: " + motivo +
+               " Diagnosticos: " + diagnosticos;
     }
 
     public Cita getCita() {

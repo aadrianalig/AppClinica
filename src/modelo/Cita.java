@@ -8,7 +8,7 @@ public class Cita {
     private Consultorio consultorio;
     private String fecha;
     private String hora;
-    private String modalidad; // Presencial / Virtual
+    private String modalidad; // Presencial o Virtual
     private String estado;    // Programada, Confirmada, En sala, Atendida, Cancelada, No show
 
     public Cita(String id, Paciente paciente, Empleado medico, Consultorio consultorio, String fecha, String hora, String modalidad, String estado) {

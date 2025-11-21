@@ -34,4 +34,13 @@ public class GestorPacientes {
         }
     }
 
+    public String obtenerTextoPacientes() {
+        String texto = "";
+        for (int i = 0; i < cantidad; i++) {
+            //concatena el resumen de todos los pacientes
+            texto = texto + pacientes[i].verResumen() + "\n";
+        }
+        return texto;
+    }
+
 }

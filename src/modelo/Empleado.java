@@ -12,7 +12,8 @@ public class Empleado {
     private String usuario;
     private String password;
 
-    public Empleado(String dni, String nombres, String apellidos, String rol, String especialidad, String telefono, String email, String usuario, String password) {
+    public Empleado(String dni, String nombres, String apellidos, String rol,
+            String especialidad, String telefono, String email, String usuario, String password) {
         this.dni = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;

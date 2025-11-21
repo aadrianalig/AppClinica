@@ -3,11 +3,11 @@ package modelo;
 public class Paciente {
 
     private String documento;
-    private String tipoDocumento; // DNI, PASAPORTE
+    private String tipoDocumento; // DNI o pasaporte
     private String nombres;
     private String apellidos;
-    private String fechaNacimiento; // como String para simplificar
-    private String sexo;
+    private String fechaNacimiento;
+    private String sexo;        // hombre o mujer
     private String telefono;
     private String email;
     private String contactoEmergencia;
@@ -26,7 +26,7 @@ public class Paciente {
 
     public String verResumen() {
         return "Paciente: " + nombres + " " + apellidos +
-               "\nDoc: " + tipoDocumento + " " + documento;
+               " Doc: " + tipoDocumento + " " + documento;
     }
 
     public String getDocumento() {

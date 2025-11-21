@@ -13,10 +13,18 @@ public class GestorEmpleados {
         cargarEmpleadosDemo();
     }
 
+    public void agregarEmpleado(Empleado e) {
+        if (cantidad < empleados.length) {
+            empleados[cantidad] = e; 
+            cantidad++;
+        }
+    }
+
     private void cargarEmpleadosDemo() {
         //Empleado (Sdni, Snombres, Sapellidos, 
         //           Srol, Sespecialidad, Stelefono, Semail
         //             Susuario, Spassword)
+        
         // admins
         agregarEmpleado(new Empleado("12345678", "Pepe", "Sanchez",
                 "ADMIN", "", "999111222", "ana@gmail.com",
@@ -43,18 +51,11 @@ public class GestorEmpleados {
                 "cajero", "cajero123"));
     }
 
-    public void agregarEmpleado(Empleado e) {
-        if (cantidad < empleados.length) {
-            empleados[cantidad] = e;
-            cantidad++;
-        }
-    }
-
     public Empleado login(String usuario, String password) {
         for (int i = 0; i < cantidad; i++) {
-            if (empleados[i].getUsuario().equals(usuario) &&
-                empleados[i].getPassword().equals(password)) {
-                return empleados[i];
+            if (empleados[i].getUsuario().equals(usuario)  // comprueba que existe un usurio con esa contrasenia
+                    && empleados[i].getPassword().equals(password)) {
+                return empleados[i]; //si existe retorna el empleado
             }
         }
         return null;

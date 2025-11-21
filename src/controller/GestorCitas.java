@@ -9,7 +9,7 @@ public class GestorCitas {
 
     private Cita[] citas;
     private int cantidad;
-
+     
     public GestorCitas(int max) {
         citas = new Cita[max];
         cantidad = 0;
@@ -54,14 +54,7 @@ public class GestorCitas {
         cantidad++;
         return cita;
     }
-
-    public void cambiarEstadoCita(String id, String nuevoEstado) {
-        Cita c = buscarPorId(id);
-        if (c != null) {
-            c.setEstado(nuevoEstado);
-        }
-    }
-
+    
     public Cita buscarPorId(String id) {
         for (int i = 0; i < cantidad; i++) {
             if (citas[i].getId().equals(id)) {
@@ -69,6 +62,13 @@ public class GestorCitas {
             }
         }
         return null;
+    }
+    
+    public void cambiarEstadoCita(String id, String nuevoEstado) {
+        Cita c = buscarPorId(id);
+        if (c != null) {
+            c.setEstado(nuevoEstado);
+        }
     }
 
     public void listarCitas() {

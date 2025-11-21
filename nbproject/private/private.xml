@@ -3,8 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/appclinica/NewClass.java</file>
-            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/newpackage/NewClass.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Empleado.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Paciente.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Consultorio.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Cita.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/ConsultaMedica.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Receta.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/OrdenServicio.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/HistoriaClinica.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/modelo/Factura.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorEmpleados.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorPacientes.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorConsultorios.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorCitas.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorHistoriaClinica.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorFacturacion.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/login.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/MenuFuncionalidad.java</file>
         </group>
     </open-files>
 </project-private>

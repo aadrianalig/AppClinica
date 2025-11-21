@@ -41,7 +41,7 @@ public class GestorHistoriaClinica {
     public void registrarConsulta(Paciente p, ConsultaMedica consulta) {
         HistoriaClinica h = obtenerOCrearHistoria(p);
         if (h != null) {
-            h.agregarConsulta(consulta);
+            h.agregarConsulta(consulta); 
         }
     }
 
