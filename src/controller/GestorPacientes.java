@@ -43,4 +43,14 @@ public class GestorPacientes {
         return texto;
     }
 
+    // Devuelve el arreglo interno de pacientes
+    public Paciente[] getPacientes() {
+        return pacientes;   // asegúrate de que tu atributo se llame 'pacientes'
+    }
+
+// Devuelve la cantidad real de pacientes registrados
+    public int getCantidad() {
+        return cantidad;    // asegúrate de que tu contador se llame 'cantidad'
+    }
+
 }

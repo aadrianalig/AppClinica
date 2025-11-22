@@ -16,7 +16,7 @@ public class login extends javax.swing.JFrame {
 
     public login() {
         initComponents();
-        
+
         //Centrar ventanas
         this.setLocationRelativeTo(null);
         gestorEmpleados = new GestorEmpleados(20);
@@ -93,7 +93,7 @@ public class login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +117,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,31 +132,20 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        //obtiene texto de label usuario
         String usuario = txtUsuario.getText();
-        
-        //obtiene contrasenia del label y lo convierte string
         String password = new String(txtPassword.getPassword());
-        
-        //usa el metodo login de gestorEmpleados del usuario y contrasenia de los labels
-        //para ver si existe o no
+
         Empleado logeado = gestorEmpleados.login(usuario, password);
-        
-        // no existe
+
         if (logeado == null) {
-            JOptionPane.showMessageDialog(this,
-                    "Usuario o contraseña incorrectos",
-                    "Error", JOptionPane.ERROR_MESSAGE); //con mensaje de error
+            // error
         } else {
-            //si existe
-            JOptionPane.showMessageDialog(this,
-                    "Bienvenido " + logeado.getNombres()
-                    + " Rol: " + logeado.getRol());
-            
-            //abrir ventana menu
-            MenuFuncionalidad menu = new MenuFuncionalidad(logeado);
+            // Crear el "gestor de gestores" UNA SOLA VEZ tras el login
+            controller.GestorDeGestores gg = new controller.GestorDeGestores();
+
+            // Pasar empleado + gg al menu
+            MenuFuncionalidad menu = new MenuFuncionalidad(logeado, gg);
             menu.setVisible(true);
-            //cerrar ventana actual (login)
             this.dispose();
         }
     }//GEN-LAST:event_btnIngresarActionPerformed

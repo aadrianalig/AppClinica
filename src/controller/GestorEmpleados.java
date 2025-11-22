@@ -15,16 +15,50 @@ public class GestorEmpleados {
 
     public void agregarEmpleado(Empleado e) {
         if (cantidad < empleados.length) {
-            empleados[cantidad] = e; 
+            empleados[cantidad] = e;
             cantidad++;
         }
+    }
+
+    public Empleado buscarPorDni(String dni) {
+        for (int i = 0; i < cantidad; i++) {
+            if (empleados[i].getDni().equals(dni)) {
+                return empleados[i];
+            }
+        }
+        return null;
+    }
+
+    public boolean registrarEmpleado(Empleado e) {
+        // validar capacidad
+        if (cantidad >= empleados.length) {
+            return false;
+        }
+        // evitar duplicados por DNI
+        if (buscarPorDni(e.getDni()) != null) {
+            return false;
+        }
+        // insertar al final
+        empleados[cantidad] = e;
+        cantidad++;
+        return true;
+    }
+
+    // Devuelve la referencia al arreglo interno (solo lectura desde fuera)
+    public Empleado[] getEmpleados() {
+        return empleados;    // asegúrate de que tu atributo se llame 'empleados'
+    }
+
+    // Devuelve cuántos empleados reales hay cargados
+    public int getCantidad() {
+        return cantidad;     // asegúrate de que tu contador se llame 'cantidad'
     }
 
     private void cargarEmpleadosDemo() {
         //Empleado (Sdni, Snombres, Sapellidos, 
         //           Srol, Sespecialidad, Stelefono, Semail
         //             Susuario, Spassword)
-        
+
         // admins
         agregarEmpleado(new Empleado("12345678", "Pepe", "Sanchez",
                 "ADMIN", "", "999111222", "ana@gmail.com",
@@ -53,7 +87,7 @@ public class GestorEmpleados {
 
     public Empleado login(String usuario, String password) {
         for (int i = 0; i < cantidad; i++) {
-            if (empleados[i].getUsuario().equals(usuario)  // comprueba que existe un usurio con esa contrasenia
+            if (empleados[i].getUsuario().equals(usuario) // comprueba que existe un usurio con esa contrasenia
                     && empleados[i].getPassword().equals(password)) {
                 return empleados[i]; //si existe retorna el empleado
             }

@@ -31,4 +31,46 @@ public class Factura {
         return total;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public double getMontoConsulta() {
+        return montoConsulta;
+    }
+
+    public void setMontoConsulta(double montoConsulta) {
+        this.montoConsulta = montoConsulta;
+    }
+
+    public double getMontoServicios() {
+        return montoServicios;
+    }
+
+    public void setMontoServicios(double montoServicios) {
+        this.montoServicios = montoServicios;
+    }
+
+    public String getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+    
+    
+
 }

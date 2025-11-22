@@ -9,14 +9,14 @@ public class GestorCitas {
 
     private Cita[] citas;
     private int cantidad;
-     
+
     public GestorCitas(int max) {
         citas = new Cita[max];
         cantidad = 0;
     }
 
     public boolean validarDisponibilidad(Empleado medico, Consultorio consul,
-                                                 String fecha, String hora) {
+            String fecha, String hora) {
         // Recorre todas las citas que ya estan en el sistema
         for (int i = 0; i < cantidad; i++) {
             Cita c = citas[i];
@@ -26,7 +26,7 @@ public class GestorCitas {
                     return false;   // ----> el medico esta ocupado
                 }
                 // Revisa si esta ocupado el consultorio a esa hora
-                if (c.getConsultorio() == consul) { 
+                if (c.getConsultorio() == consul) {
                     return false;  // ----> el consultario esta ocupado
                 }
             }
@@ -35,8 +35,8 @@ public class GestorCitas {
     }
 
     public Cita crearCita(String id, Paciente paciente, Empleado medico,
-                          Consultorio consultorio, String fecha,
-                          String hora, String modalidad) {
+            Consultorio consultorio, String fecha,
+            String hora, String modalidad) {
         // Si la validacion devuelve false
         if (!validarDisponibilidad(medico, consultorio, fecha, hora)) {
             System.out.println("Medico o consultorio no disponible.");
@@ -49,12 +49,12 @@ public class GestorCitas {
         }
         //Crea una nueva cita con estado: Programada
         Cita cita = new Cita(id, paciente, medico, consultorio,
-                             fecha, hora, modalidad, "Programada");
+                fecha, hora, modalidad, "Programada");
         citas[cantidad] = cita;
         cantidad++;
         return cita;
     }
-    
+
     public Cita buscarPorId(String id) {
         for (int i = 0; i < cantidad; i++) {
             if (citas[i].getId().equals(id)) {
@@ -63,7 +63,30 @@ public class GestorCitas {
         }
         return null;
     }
-    
+
+    // Devuelve el arreglo interno de citas
+    public Cita[] getCitas() {
+        return citas;      // asegúrate de que tu atributo se llame 'citas'
+    }
+
+// Devuelve la cantidad real de citas registradas
+    public int getCantidad() {
+        return cantidad;   // asegúrate de que tu contador se llame 'cantidad'
+    }
+
+// Si ya tienes agregarCita(…) úsalo; si no, agrega este:
+    public boolean registrarCita(Cita c) {
+        if (cantidad >= citas.length) {
+            return false;
+        }
+        if (buscarPorId(c.getId()) != null) {
+            return false; // no duplicar
+        }
+        citas[cantidad] = c;
+        cantidad++;
+        return true;
+    }
+
     public void cambiarEstadoCita(String id, String nuevoEstado) {
         Cita c = buscarPorId(id);
         if (c != null) {

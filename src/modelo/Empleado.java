@@ -30,6 +30,7 @@ public class Empleado {
                 + "\nRol: " + this.rol + "\nDNI: " + this.dni;
     }
 
+
     public String getDni() {
         return dni;
     }

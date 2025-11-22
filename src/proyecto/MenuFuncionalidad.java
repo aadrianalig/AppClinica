@@ -4,23 +4,28 @@
  */
 package proyecto;
 
+import controller.GestorDeGestores;
 import modelo.Empleado;
+import javax.swing.JOptionPane;
+
 public class MenuFuncionalidad extends javax.swing.JFrame {
 
     private Empleado empleado;
+    private GestorDeGestores gg;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuFuncionalidad.class.getName());
 
     public MenuFuncionalidad() {
         initComponents();
-        // centrar la ventana
         this.setLocationRelativeTo(null);
     }
 
-    public MenuFuncionalidad(Empleado empleado) {
-        this();                 // inicializa componentes
-        this.empleado = empleado; //guarda el empleado del login
-        configurarSegunRol();   // ahora sí, los componentes ya existen
+    // NUEVO constructor: recibe empleado + gg
+    public MenuFuncionalidad(Empleado empleado, GestorDeGestores gg) {
+        this();
+        this.empleado = empleado;
+        this.gg = gg; // guardar referencia central a todos los gestores
+        configurarSegunRol();
     }
 
     private void configurarSegunRol() {
@@ -42,6 +47,8 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
             itemEmpleados.setVisible(true);
             itemConsultorios.setVisible(true);
             itemReportes.setVisible(true);
+            itemConsultas.setVisible(true);
+            itemPacientes.setVisible(true);
         } else if (rol.equals("RECEP")) {
             itemPacientes.setVisible(true);
             itemConsultas.setVisible(true);
@@ -70,14 +77,13 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
         lblBienvenida = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnFile = new javax.swing.JMenu();
         itemEmpleados = new javax.swing.JMenuItem();
         itemConsultorios = new javax.swing.JMenuItem();
         itemReportes = new javax.swing.JMenuItem();
         itemConsultas = new javax.swing.JMenuItem();
         itemPacientes = new javax.swing.JMenuItem();
+        itemFacturas = new javax.swing.JMenuItem();
         itemCerrarSesion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jPanel1.setBackground(new java.awt.Color(167, 215, 209));
 
@@ -187,15 +193,13 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
         jMenu1.setBackground(new java.awt.Color(105, 158, 151));
         jMenu1.setText("File");
 
-        mnFile.setText("File");
-
         itemEmpleados.setText("Empleados");
         itemEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemEmpleadosActionPerformed(evt);
             }
         });
-        mnFile.add(itemEmpleados);
+        jMenu1.add(itemEmpleados);
 
         itemConsultorios.setText("Consultorios");
         itemConsultorios.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +207,7 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
                 itemConsultoriosActionPerformed(evt);
             }
         });
-        mnFile.add(itemConsultorios);
+        jMenu1.add(itemConsultorios);
 
         itemReportes.setText("Reportes");
         itemReportes.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +215,7 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
                 itemReportesActionPerformed(evt);
             }
         });
-        mnFile.add(itemReportes);
+        jMenu1.add(itemReportes);
 
         itemConsultas.setText("Consultas");
         itemConsultas.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +223,7 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
                 itemConsultasActionPerformed(evt);
             }
         });
-        mnFile.add(itemConsultas);
+        jMenu1.add(itemConsultas);
 
         itemPacientes.setText("Pacientes");
         itemPacientes.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +231,15 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
                 itemPacientesActionPerformed(evt);
             }
         });
-        mnFile.add(itemPacientes);
+        jMenu1.add(itemPacientes);
+
+        itemFacturas.setText("Facturas");
+        itemFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFacturasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemFacturas);
 
         itemCerrarSesion.setText("Cerrar sesión");
         itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -235,14 +247,9 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
                 itemCerrarSesionActionPerformed(evt);
             }
         });
-        mnFile.add(itemCerrarSesion);
-
-        jMenu1.add(mnFile);
+        jMenu1.add(itemCerrarSesion);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -261,23 +268,28 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportesActionPerformed
-        // TODO add your handling code here:
+        FrmReportes frm = new FrmReportes(gg);
+        frm.setVisible(true);
     }//GEN-LAST:event_itemReportesActionPerformed
 
     private void itemEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEmpleadosActionPerformed
-        // TODO add your handling code here:
+        FrmEmpleados frm = new FrmEmpleados(gg);
+        frm.setVisible(true);;
     }//GEN-LAST:event_itemEmpleadosActionPerformed
 
     private void itemConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultoriosActionPerformed
-        // TODO add your handling code here:
+        FrmConsultorios frm = new FrmConsultorios(gg);
+        frm.setVisible(true);
     }//GEN-LAST:event_itemConsultoriosActionPerformed
 
     private void itemConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultasActionPerformed
-        // TODO add your handling code here:
+        FrmConsultas frm = new FrmConsultas(gg);
+        frm.setVisible(true);
     }//GEN-LAST:event_itemConsultasActionPerformed
 
     private void itemPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPacientesActionPerformed
-        // TODO add your handling code here:
+        FrmPacientes frm = new FrmPacientes(gg);
+        frm.setVisible(true);
     }//GEN-LAST:event_itemPacientesActionPerformed
 
     private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
@@ -293,39 +305,17 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        //obtiene texto de label usuario
-        String usuario = txtUsuario.getText();
-
-        //obtiene contrasenia del label y lo convierte string
-        String password = new String(txtPassword.getPassword());
-
-        //usa el metodo login de gestorEmpleados del usuario y contrasenia de los labels
-        //para ver si existe o no
-        Empleado logeado = GestorEmpleados.login(usuario, password);
-
-        // no existe
-        if (logeado == null) {
-            JOptionPane.showMessageDialog(this,
-                    "Usuario o contraseña incorrectos",
-                    "Error", JOptionPane.ERROR_MESSAGE); //con mensaje de error
-        } else {
-            //si existe
-            JOptionPane.showMessageDialog(this,
-                    "Bienvenido " + logeado.getNombres()
-                    + " Rol: " + logeado.getRol());
-
-            //abrir ventana menu
-            MenuFuncionalidad menu = new MenuFuncionalidad(logeado);
-            menu.setVisible(true);
-            //cerrar ventana actual (login)
-            this.dispose();
-        }
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        //cierra la aplicacion
-        System.exit(0);
+        
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void itemFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFacturasActionPerformed
+        FrmFacturas frm = new FrmFacturas(gg);
+        frm.setVisible(true);
+    }//GEN-LAST:event_itemFacturasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -356,17 +346,16 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemConsultas;
     private javax.swing.JMenuItem itemConsultorios;
     private javax.swing.JMenuItem itemEmpleados;
+    private javax.swing.JMenuItem itemFacturas;
     private javax.swing.JMenuItem itemPacientes;
     private javax.swing.JMenuItem itemReportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblBienvenida;
-    private javax.swing.JMenu mnFile;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
