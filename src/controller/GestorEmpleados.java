@@ -46,12 +46,12 @@ public class GestorEmpleados {
 
     // Devuelve la referencia al arreglo interno (solo lectura desde fuera)
     public Empleado[] getEmpleados() {
-        return empleados;    // asegúrate de que tu atributo se llame 'empleados'
+        return empleados;    
     }
 
     // Devuelve cuántos empleados reales hay cargados
     public int getCantidad() {
-        return cantidad;     // asegúrate de que tu contador se llame 'cantidad'
+        return cantidad;     
     }
 
     private void cargarEmpleadosDemo() {

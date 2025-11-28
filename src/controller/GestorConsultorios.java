@@ -11,7 +11,7 @@ public class GestorConsultorios {
         consultorios = new Consultorio[max];
         cantidad = 0;
     }
-    
+
     public void listarConsultorios() {
         for (int i = 0; i < cantidad; i++) {
             System.out.println(consultorios[i].verInfo());
@@ -37,13 +37,15 @@ public class GestorConsultorios {
         return null;
     }
 
-    // registrar (o delega a agregarConsultorio(...) si ya lo tienes)
+    // agrega un consultorio al arreglo -- true si se pudo - false si no
     public boolean registrarConsultorio(Consultorio c) {
+        // si ya está lleno, no se puede
         if (cantidad >= consultorios.length) {
             return false;
         }
+        // si ya existe uno con ese código, tampoco
         if (buscarPorCodigo(c.getCodigo()) != null) {
-            return false; // no duplicar
+            return false;
         }
         consultorios[cantidad] = c;
         cantidad++;

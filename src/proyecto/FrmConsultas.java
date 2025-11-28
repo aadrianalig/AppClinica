@@ -16,25 +16,25 @@ public class FrmConsultas extends javax.swing.JFrame {
 
     public FrmConsultas() {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); //centra la ventana
     }
 
     public FrmConsultas(GestorDeGestores gg) {
-        this();
+        this();  //llama al constructor sin parametros
         this.gg = gg;
-        this.gestorCitas = gg.getGestorCitas();
-        configurarTabla();
-        cargarTabla();
+        this.gestorCitas = gg.getGestorCitas(); // tomo el gestor de citas
+        configurarTabla();    // setea columnas y no editable
+        cargarTabla();        // llena la tabla con las citas actuales
     }
 
     private void configurarTabla() {
         modelo = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int r, int c) {
-                return false;
+                return false; //solo lectura
             }
         };
-        modelo.addColumn("Id");
+        modelo.addColumn("Id");           //columnas
         modelo.addColumn("FechaHora");
         modelo.addColumn("PacienteDoc");
         modelo.addColumn("Medico"); //dni
@@ -46,7 +46,7 @@ public class FrmConsultas extends javax.swing.JFrame {
 
     private void limpiarTabla() {
         while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
+            modelo.removeRow(0); //borra filas una por una
         }
     }
 
@@ -58,23 +58,23 @@ public class FrmConsultas extends javax.swing.JFrame {
         txtConsultorio.setText("");
         cbEstado.setSelectedIndex(0);
         cbModalidad.setSelectedIndex(0);
-        txtId.requestFocus();
+        txtId.requestFocus();   //limpia inputs, focus id y selected 0
     }
 
     private void cargarTabla() {
-        limpiarTabla();
-        Cita[] arr = gestorCitas.getCitas();     // asegúrate de tener getCitas()
-        int cant = gestorCitas.getCantidad();    // y getCantidad()
+        limpiarTabla();                                   
+        Cita[] arr = gestorCitas.getCitas();              
+        int cant = gestorCitas.getCantidad();             
         for (int i = 0; i < cant; i++) {
-            Cita c = arr[i];
+            Cita c = arr[i];                              
             modelo.addRow(new Object[]{
-                c.getId(),
-                c.getFecha(), // ajusta a tus getters reales si difieren
-                c.getPaciente().getDocumento(),
-                c.getMedico(),
-                c.getConsultorio(),
-                c.getEstado(),
-                c.getModalidad()
+                c.getId(), // id
+                c.getFecha(), // fecha/hora
+                c.getPaciente().getDocumento(), // doc paciente
+                c.getMedico(), // medico dni
+                c.getConsultorio(), // consultorio codigo
+                c.getEstado(), // estado
+                c.getModalidad() // modalidad
             });
         }
     }
@@ -415,7 +415,7 @@ public class FrmConsultas extends javax.swing.JFrame {
         } else {
             txtFechaHora.setText(c.getFecha());
             txtPacienteDoc.setText(c.getPaciente().getDocumento());
-            txtMedico.setText(c.getMedico().getDni());            
+            txtMedico.setText(c.getMedico().getDni());
             txtConsultorio.setText(c.getConsultorio().getCodigo());
             cbEstado.setSelectedItem(c.getEstado());
             cbModalidad.setSelectedItem(c.getModalidad());

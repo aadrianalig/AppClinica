@@ -20,7 +20,7 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    // NUEVO constructor: recibe empleado + gg
+    //recibe empleado + gg
     public MenuFuncionalidad(Empleado empleado, GestorDeGestores gg) {
         this();
         this.empleado = empleado;
@@ -28,36 +28,39 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
         configurarSegunRol();
     }
 
-    private void configurarSegunRol() {
-        if (empleado == null) {
+    private void configurarSegunRol() {  // muestra/oculta menus segun rol
+        if (empleado == null) {           // si no hay empleado, salgo
             return;
         }
 
-        String rol = empleado.getRol();
+        String rol = empleado.getRol();  // rol actual (ADMIN, RECEP, etc.)
 
-        lblBienvenida.setText("Bienvenido " + empleado.getNombres() + "        Rol: " + rol);
+        lblBienvenida.setText("Bienvenido " + empleado.getNombres()
+                + "        Rol: " + rol);    // texto de bienvenida
 
+        // todo oculto default
         itemEmpleados.setVisible(false);
         itemConsultorios.setVisible(false);
         itemReportes.setVisible(false);
         itemConsultas.setVisible(false);
         itemPacientes.setVisible(false);
 
-        if (rol.equals("ADMIN")) {
+        // activo segun el rol
+        if (rol.equals("ADMIN")) {          // admin todo
             itemEmpleados.setVisible(true);
             itemConsultorios.setVisible(true);
             itemReportes.setVisible(true);
             itemConsultas.setVisible(true);
             itemPacientes.setVisible(true);
-        } else if (rol.equals("RECEP")) {
+        } else if (rol.equals("RECEP")) {  // recepcion: pacientes + consultas
             itemPacientes.setVisible(true);
             itemConsultas.setVisible(true);
-        } else if (rol.equals("MEDICO")) {
+        } else if (rol.equals("MEDICO")) { // medico: consultas + pacientes
             itemConsultas.setVisible(true);
             itemPacientes.setVisible(true);
-        } else if (rol.equals("ENF")) {
+        } else if (rol.equals("ENF")) {    // enfermeria: consultas
             itemConsultas.setVisible(true);
-        } else if (rol.equals("CAJERO")) {
+        } else if (rol.equals("CAJERO")) { // cajero: reportes
             itemReportes.setVisible(true);
         }
     }
@@ -305,11 +308,11 @@ public class MenuFuncionalidad extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
+
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void itemFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFacturasActionPerformed

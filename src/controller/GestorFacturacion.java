@@ -35,7 +35,6 @@ public class GestorFacturacion {
         return suma;
     }
 
-    // Devuelve el arreglo de facturas y la cantidad real
     public Factura[] getFacturas() {
         return facturas;
     }
@@ -44,7 +43,6 @@ public class GestorFacturacion {
         return cantidad;
     }
 
-// Buscar por id
     public Factura buscarPorId(String id) {
         for (int i = 0; i < cantidad; i++) {
             if (facturas[i].getId().equals(id)) {
@@ -54,7 +52,6 @@ public class GestorFacturacion {
         return null;
     }
 
-// Registrar (o delega a tu agregarFactura si ya existe)
     public boolean registrarFactura(Factura f) {
         if (cantidad >= facturas.length) {
             return false;

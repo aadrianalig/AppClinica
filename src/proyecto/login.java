@@ -13,10 +13,10 @@ public class login extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(login.class.getName());
 
     private GestorEmpleados gestorEmpleados;
+    private controller.GestorDeGestores gg;
 
     public login() {
         initComponents();
-
         //Centrar ventanas
         this.setLocationRelativeTo(null);
         gestorEmpleados = new GestorEmpleados(20);
@@ -132,16 +132,14 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String usuario = txtUsuario.getText();
-        String password = new String(txtPassword.getPassword());
+        String usuario = txtUsuario.getText(); //usuario
+        String password = new String(txtPassword.getPassword()); //password
 
         Empleado logeado = gestorEmpleados.login(usuario, password);
 
         if (logeado == null) {
             // error
         } else {
-            // Crear el "gestor de gestores" UNA SOLA VEZ tras el login
-            controller.GestorDeGestores gg = new controller.GestorDeGestores();
 
             // Pasar empleado + gg al menu
             MenuFuncionalidad menu = new MenuFuncionalidad(logeado, gg);

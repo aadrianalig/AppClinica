@@ -2,7 +2,7 @@ package controller;
 
 public class GestorDeGestores {
 
-    // ===== Gestores principales del sistema =====
+    // ---- Gestores principales del sistema ----
     private GestorEmpleados gestorEmpleados;
     private GestorPacientes gestorPacientes;
     private GestorConsultorios gestorConsultorios;
@@ -10,18 +10,19 @@ public class GestorDeGestores {
     private GestorFacturacion gestorFacturacion;
     private GestorReportes gestorReportes;
 
-    // ===== Constructor: inicializa todos los gestores =====
+    // ---- Constructor: inicializa todos los gestores ----
     public GestorDeGestores() {
-        // Capacidades de ejemplo (ajusta si quieres)
+        // Capacidades de gestores
         gestorEmpleados    = new GestorEmpleados(50);
         gestorPacientes    = new GestorPacientes(200);
         gestorConsultorios = new GestorConsultorios(50);
         gestorCitas        = new GestorCitas(300);
         gestorFacturacion  = new GestorFacturacion(300);
+        //para que tenga acceso a los demas gestores
         gestorReportes     = new GestorReportes(this);
     }
 
-    // ===== Getters para que las ventanas usen los gestores =====
+    // ----- Getters para que las ventanas usen los gestores ------
     public GestorEmpleados getGestorEmpleados() {
         return gestorEmpleados;
     }

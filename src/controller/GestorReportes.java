@@ -11,20 +11,24 @@ public class GestorReportes {
         this.gg = gg;
     }
 
-    // ====== Pacientes (para JTable) ======
+    // --- Pacientes ---- 
+    //para Jtable
     public String[] columnasPacientes() {
-        return new String[]{"Documento","TipoDoc","Nombres","Apellidos","Telefono","Email"};
+        return new String[]{"Documento", "TipoDoc", "Nombres", "Apellidos", "Telefono", "Email"};
     }
 
+    //matriz datos
     public Object[][] datosPacientes() {
-        var gp = gg.getGestorPacientes();
-        Paciente[] arr = gp.getPacientes();
-        int n = gp.getCantidad();
-        Object[][] data = new Object[n][6];
+        GestorPacientes gp = gg.getGestorPacientes();   // pido el gestor de pacientes de gg
+        Paciente[] arr = gp.getPacientes(); // arreglo con los pacientes
+        int n = gp.getCantidad();           // cantidad pacientes 
+
+        Object[][] data = new Object[n][6]; //n filas x 6 (doc, tipoDoc, nombres, apellidos, telef, email)
+
         for (int i = 0; i < n; i++) {
             Paciente p = arr[i];
             data[i][0] = p.getDocumento();
-            data[i][1] = p.getTipoDocumento(); // ajusta si tu getter se llama distinto
+            data[i][1] = p.getTipoDocumento();
             data[i][2] = p.getNombres();
             data[i][3] = p.getApellidos();
             data[i][4] = p.getTelefono();
@@ -33,16 +37,19 @@ public class GestorReportes {
         return data;
     }
 
-    // ====== Empleados (listado + conteo por rol) ======
+    // --- Empleados ---
+    //para Jtable
     public String[] columnasEmpleados() {
-        return new String[]{"DNI","Nombres","Apellidos","Rol","Especialidad"};
+        return new String[]{"DNI", "Nombres", "Apellidos", "Rol", "Especialidad"};
     }
 
+    //matriz datos
     public Object[][] datosEmpleados() {
-        var ge = gg.getGestorEmpleados();
-        Empleado[] arr = ge.getEmpleados();
-        int n = ge.getCantidad();
-        Object[][] data = new Object[n][5];
+        GestorEmpleados ge = gg.getGestorEmpleados();  // pido el gestor de empleados de gg
+        Empleado[] arr = ge.getEmpleados();   // arreglo con los empleados
+        int n = ge.getCantidad();             // cantidad empleados
+
+        Object[][] data = new Object[n][5];  //n filas x 5 para la tabla
         for (int i = 0; i < n; i++) {
             Empleado e = arr[i];
             data[i][0] = e.getDni();
@@ -54,24 +61,31 @@ public class GestorReportes {
         return data;
     }
 
-    // conteo simple por rol (ADMIN, RECEP, MEDICO, ENF, CAJERO)
     public String[] rolesBase() {
-        return new String[]{"ADMIN","RECEP","MEDICO","ENF","CAJERO"};
+        return new String[]{"ADMIN", "RECEP", "MEDICO", "ENF", "CAJERO"};
     }
 
     public int[] conteoEmpleadosPorRol() {
-        var ge = gg.getGestorEmpleados();
-        Empleado[] arr = ge.getEmpleados();
-        int n = ge.getCantidad();
-        int[] c = new int[5]; // ADMIN, RECEP, MEDICO, ENF, CAJERO
-        for (int i = 0; i < n; i++) {
-            String r = arr[i].getRol();
-            if ("ADMIN".equals(r)) c[0]++;
-            else if ("RECEP".equals(r)) c[1]++;
-            else if ("MEDICO".equals(r)) c[2]++;
-            else if ("ENF".equals(r)) c[3]++;
-            else if ("CAJERO".equals(r)) c[4]++;
+
+        GestorEmpleados ge = gg.getGestorEmpleados();   // pido el gestor de empleados de gg
+        Empleado[] arr = ge.getEmpleados();              // arreglo con los empleados
+        int n = ge.getCantidad();                        // cantidad empleados
+
+        int[] c = new int[5]; // ADMIN, RECEP, MEDICO, ENF, CAJERO   
+        for (int i = 0; i < n; i++) {                                        
+            String r = arr[i].getRol();   // rol del empleado actual
+            if ("ADMIN".equals(r)) {   // si es ADMIN
+                c[0]++; //ADMIN++
+            } else if ("RECEP".equals(r)) { // si es RECEP
+                c[1]++; //RECEP++
+            } else if ("MEDICO".equals(r)) { // si es MEDICO
+                c[2]++; //MEDICO++
+            } else if ("ENF".equals(r)) { // si es ENF
+                c[3]++; //ENF++
+            } else if ("CAJERO".equals(r)) { // si es CAJERO
+                c[4]++; //CAJERO++
+            }
         }
-        return c;
+        return c;    // devuelvo el vector con los conteos
     }
 }
