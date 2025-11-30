@@ -4,6 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/login.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorCitas.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorConsultorios.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorDeGestores.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorEmpleados.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorFacturacion.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorHistoriaClinica.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorPacientes.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/controller/GestorReportes.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/MenuFuncionalidad.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmReportes.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmConsultas.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmConsultorios.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmEmpleados.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmFacturas.java</file>
+            <file>file:/C:/Users/Adria/OneDrive/Escritorio/java/AppClinica/src/proyecto/FrmPacientes.java</file>
         </group>
     </open-files>
 </project-private>

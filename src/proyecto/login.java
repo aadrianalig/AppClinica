@@ -4,6 +4,7 @@
  */
 package proyecto;
 
+import controller.GestorDeGestores;
 import controller.GestorEmpleados;
 import modelo.Empleado;
 import javax.swing.JOptionPane;
@@ -20,6 +21,9 @@ public class login extends javax.swing.JFrame {
         //Centrar ventanas
         this.setLocationRelativeTo(null);
         gestorEmpleados = new GestorEmpleados(20);
+        // Inicializa el objeto GestorDeGestores
+        gg = new GestorDeGestores(); // Esto garantiza que gg no sea null
+        gestorEmpleados = gg.getGestorEmpleados();
     }
 
     @SuppressWarnings("unchecked")
